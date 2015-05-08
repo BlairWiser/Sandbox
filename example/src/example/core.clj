@@ -1,4 +1,5 @@
 (ns example.core
+	(:use compojure.core)
 	(:require
 		[ring.adapter.jetty :as jetty]
 		[clostache.parser :as clostache]
@@ -20,4 +21,4 @@
 	(route/not-found "404 Not Found"))
 
 (defn -main []
-	(jetty/run-jetty main-routes {:port 5000})
+	(jetty/run-jetty main-routes {:port 5000}))
