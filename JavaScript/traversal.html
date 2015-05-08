@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.format * {
+	color: lightgrey;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+<script>
+$(document).ready(function(){
+	$("span").parent().css({"color": "red"});
+});
+</script>
+</head>
+
+<body>
+<div class="format">
+	<div> div
+		<p> paragraph
+			<span> span</span>
+		</p>
+	</div>
+</div>
+
+</body>
+</html>
