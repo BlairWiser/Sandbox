@@ -7,6 +7,9 @@
 (let [rand (Random.)]
 	(println "Rand = " (. rand nextInt 10)))
 
+(def rng (new Random))
+(println "RNG = " (.nextInt rng 100))
+
 ;; Accessing static members and methods
 (println "Pi is " Math/PI)
 (println "Sqrt of 9 is " (Math/sqrt 9))
@@ -16,3 +19,4 @@
 (println (.indexOf "Let's find the S" "S"))
 
 (println "=================")
+
