@@ -5,7 +5,8 @@
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [compojure "1.3.1"]
                  [ring/ring-defaults "0.1.2"]
-                 [ring/ring-json "0.3.1"]]
+                 [ring/ring-json "0.3.1"]
+                 [clojure-opennlp "0.3.3"]]
   :plugins [[lein-ring "0.8.13"]]
   :ring {:handler web.handler/app}
   :profiles

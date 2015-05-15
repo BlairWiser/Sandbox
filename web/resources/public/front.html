@@ -3,25 +3,32 @@
 <head>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
 <script>
+	function getData() {
+		return $.ajax({
+			url: "src/web/handler.clj",
+			type: "POST",
+			data: {
+				"sentence": $("#box").val();
+			}
+			dataType: "json"
+		});
+	}
+
+	function handleData(json) {
+		$("#section").html("");
+		$("#section").append(json.prob);
+	}
+
+	function handleError(xhr, status, errorThrown) {
+		alert("There was a problem!");
+		console.log("Error: " + errorThrown);
+		console.log("Status: " + status);
+		console.dir(xhr);
+	}
+
 	$document.ready(function(){
 		$("button").click(function(){
-			$.ajax({
-				url: "../../src/web/handler.clj",
-				type: "GET",
-				dataType: "json",
-				success: function(json) {
-					$("#section").text(json.stuff);
-				},
-				error: function(xhr, status, errorThrown) {
-					alert("There was a problem!");
-					console.log("Error: " + errorThrown);
-					console.log("Status: " + status);
-					console.dir(xhr);
-				},
-				complete: function(xhr, status) {
-					alert("Request complete");
-				}
-			});
+			getData().done(handleData).fail(handleError);
 		});
 	});
 </script>
@@ -29,6 +36,7 @@
 
 <body>
 	<div id="section">Initial text</div>
-	<button>Get stuff</button>
+	<input type="text" id="box">
+	<button>Get probabilities</button>
 </body>
 </html>
