@@ -14,8 +14,9 @@
   (GET "/" [] (resp/resource-response "front.html" {:root "public"}))
   (POST "/" request
         (let [sentence (or (get-in request [:body :sentence]) 
-                           (get-in request [:data :sentence])
-                           "I study quantum physics.")]
+                           (get-in request [:params :sentence])
+                           "I study quantum physics."
+                           )]
           {:status 200
            :body {:sentence sentence
                   :prob (:probabilities (meta (get-sentences sentence)))}}))

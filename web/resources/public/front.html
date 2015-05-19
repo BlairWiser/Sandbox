@@ -16,7 +16,9 @@
 
 	function handleData(json) {
 		$("#section").html("");
-		$("#section").append(json.prob);
+		for (var i in json.prob) {
+			$("#section").append(json.prob[i] + '<br/>');
+		}
 		console.debug(json);
 	}
 
