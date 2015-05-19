@@ -15,10 +15,10 @@
   (POST "/" request
         (let [sentence (or (get-in request [:body :sentence]) 
                            (get-in request [:params :sentence])
-                           "I study quantum physics."
-                           )]
+                           "I study quantum physics.")]
           {:status 200
-           :body {:sentence sentence
+           :body {:string sentence
+                  :sentences (get-sentences sentence)
                   :prob (:probabilities (meta (get-sentences sentence)))}}))
   (route/resources "/")
   (route/not-found "Not Found"))
