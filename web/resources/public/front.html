@@ -5,11 +5,11 @@
 <script>
 	function getData() {
 		return $.ajax({
-			url: "src/web/handler.clj",
+			url: "/",
 			type: "POST",
 			data: {
-				"sentence": $("#box").val();
-			}
+				"sentence": $("#box").val()
+			},
 			dataType: "json"
 		});
 	}
@@ -17,6 +17,7 @@
 	function handleData(json) {
 		$("#section").html("");
 		$("#section").append(json.prob);
+		console.debug(json);
 	}
 
 	function handleError(xhr, status, errorThrown) {
@@ -26,7 +27,7 @@
 		console.dir(xhr);
 	}
 
-	$document.ready(function(){
+	$(document).ready(function(){
 		$("button").click(function(){
 			getData().done(handleData).fail(handleError);
 		});

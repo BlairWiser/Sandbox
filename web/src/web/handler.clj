@@ -15,7 +15,7 @@
   (POST "/" request
         (let [sentence (or (get-in request [:body :sentence]) 
                            (get-in request [:data :sentence])
-                           ("I study quantum physics."))]
+                           "I study quantum physics.")]
           {:status 200
            :body {:sentence sentence
                   :prob (:probabilities (meta (get-sentences sentence)))}}))
